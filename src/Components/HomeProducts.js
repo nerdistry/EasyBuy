@@ -5,6 +5,7 @@ import {
   Image,
   Pressable,
   ScrollView,
+  Spacer,
   Text,
 } from "native-base";
 import React from "react";
@@ -58,7 +59,8 @@ function HomeProducts() {
 
               <Box flexDirection="row">
                 <Rating value={product.rating} />
-                <Text flex={1} paddingLeft="5" isTruncated fontSize={11} bold>@{product.owner}</Text> 
+                <Spacer />
+                <Text isTruncated fontSize={11} bold>@{product.owner}</Text> 
               </Box>
             </Box>
           </Pressable>

@@ -11,7 +11,7 @@ const CartEmpty = () => {
         <Center w={200} h={200} bg={Colors.submain} rounded="full">
           <Entypo name="shopping-cart" size={70} color="white" />
         </Center>
-        <Text mt={5} color={Colors.submain} fontSize={15} bold>
+        <Text mt={5} color={Colors.submain} fontSize={15} bold textAlign="center">
           CART IS EMPTY, KEEP SHOPPING TO ADD ITEMS!
         </Text>
       </Center>

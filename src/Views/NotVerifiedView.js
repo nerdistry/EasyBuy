@@ -19,15 +19,15 @@ function NotVerifiedView() {
       </Text>
 
       <VStack space={6} px={5} alignItems="center">
-        <CButton bg="#141414" color="white">
+        <CButton bg={Colors.main} color="white">
           REGISTER
         </CButton>
 
         <CButton
           bg="white"
-          color="#003c32"
+          color={Colors.submain}
           type="outline"
-          borderColor="#003c32"
+          borderColor={Colors.submain}
           borderWidth="3"
         >
           LOGIN

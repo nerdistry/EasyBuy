@@ -1,6 +1,6 @@
 const Colors = {
     main: "#141414",
-    submain: '#003c32',
+    submain: '#006352',
 };
 
 export default Colors;

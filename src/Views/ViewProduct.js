@@ -36,12 +36,12 @@ function ViewProduct() {
               step={1}
               maxValue={15}
               minValue={0}
-              borderColor="gray.700"
+              borderColor={Colors.main}
               rounded
               textColor="black"
               iconStyle={{color: "white"}}
-              rightButtonBackgroundColor="#141414"
-              leftButtonBackgroundColor="#141414"
+              rightButtonBackgroundColor={Colors.main}
+              leftButtonBackgroundColor={Colors.main}
             />
 
             <Spacer />

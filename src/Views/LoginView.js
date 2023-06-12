@@ -73,7 +73,7 @@ function LoginVIew() {
           w="80%"
           padding={3}
           rounded={20}
-          bg="#141414"
+          bg={Colors.main}
           _text={{
             fontWeight: "bold",
             fontSize: "lg",

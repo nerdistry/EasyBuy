@@ -1,14 +1,14 @@
 <script src="http://localhost:8097"></script>;
 
 import React from "react";
-import { Box, NativeBaseProvider, Text } from "native-base";
-import CartView from "./src/Views/CartView";
-import ProfileView from "./src/Views/ProfileView";
+import { NativeBaseProvider } from "native-base";
+import PlaceOrderView from "./src/Views/PlaceOrderView";
+
 
 export default function App() {
   return (
     <NativeBaseProvider>
-      <ProfileView />
+      <PlaceOrderView />
     </NativeBaseProvider>
   );
 }

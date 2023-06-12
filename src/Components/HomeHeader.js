@@ -9,10 +9,11 @@ import {
 } from "native-base";
 import React from "react";
 import { Entypo, AntDesign } from "@expo/vector-icons";
+import Colors from "../color";
 
 function HomeHeader() {
   return (
-    <Box w="full" px={5} bg="#141414" safeAreaTop>
+    <Box w="full" px={5} bg={Colors.main} safeAreaTop pt={2}>
       <Box flexDirection="row">
         <Box flexDirection="row" flex={1}>
           <Image
@@ -64,7 +65,7 @@ function HomeHeader() {
           paddingX={2}
           my={4}
         >
-          <AntDesign name="search1" size={24} color="#141414" />
+          <AntDesign name="search1" size={24} color={Colors.main} />
           <Input
             placeholder="Clothes and shoes ...."
             bg="gray.200"
