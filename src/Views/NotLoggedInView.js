@@ -1,11 +1,25 @@
+import { StatusBar } from "expo-status-bar";
 import { Box, Button, Center, Text, Image, VStack } from "native-base";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import Colors from "../color";
 import CButton from "../Components/CButton";
 
-function NotVerifiedView() {
+
+function NotLoggedInView({ navigation }) {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      headerShadowVisible: false,
+      headerTitleStyle: { color: "white" },
+      headerStyle: { backgroundColor: "white" },
+      headerTitleAlign: "center",
+      headerTintColor: "black",
+    });
+  }, [navigation]);
+
   return (
-    <Box flex={1} safeAreaTop>
+    <Box flex={1} safeAreaTop bg="white">
+    <StatusBar style="dark" />
       <Center w="full" h={300}>
         <Image
           source={require("../../assets/logo_bg.png")}
@@ -19,7 +33,11 @@ function NotVerifiedView() {
       </Text>
 
       <VStack space={6} px={5} alignItems="center">
-        <CButton bg={Colors.main} color="white">
+        <CButton
+          bg={Colors.main}
+          color="white"
+          onPress={() => navigation.navigate("Register")}
+        >
           REGISTER
         </CButton>
 
@@ -29,6 +47,7 @@ function NotVerifiedView() {
           type="outline"
           borderColor={Colors.submain}
           borderWidth="3"
+          onPress={() => navigation.navigate("Login")}
         >
           LOGIN
         </CButton>
@@ -37,4 +56,4 @@ function NotVerifiedView() {
   );
 }
 
-export default NotVerifiedView;
+export default NotLoggedInView;

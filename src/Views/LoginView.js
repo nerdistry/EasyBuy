@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { View, Text } from "react-native";
 import {
   Box,
@@ -6,16 +6,35 @@ import {
   Heading,
   Image,
   Input,
+  KeyboardAvoidingView,
   Pressable,
   VStack,
 } from "native-base";
 import Colors from "../color";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import { StatusBar } from "expo-status-bar";
 
-function LoginVIew() {
+function LoginView({ navigation }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      headerShadowVisible: false,
+      headerTitleStyle: { color: "white" },
+      headerStyle: { backgroundColor: "white" },
+      headerTitleAlign: "center",
+      headerTintColor: "black",
+      headerBackTitleStyle: { color: "black"}
+    });
+  }, [navigation]);
+
+  const _login = () => {};
   return (
-    <Box flex={1} bg={Colors.white}>
-      <Box alignItems="center" width="full" marginTop="15%">
+    <KeyboardAvoidingView flex={1} bg="white" behavior="padding">
+    <StatusBar style="dark" />
+      <Box alignItems="center" width="full">
         <Image
           // flex={1}
           source={require("../../assets/logo_bg.png")}
@@ -34,7 +53,7 @@ function LoginVIew() {
         alignItems="center"
       >
         <Heading>Welcome Back</Heading>
-        
+
         <VStack space={5} pt="6">
           {/* EMAIL */}
           <Box w="100%">
@@ -45,8 +64,12 @@ function LoginVIew() {
               placeholder="example@gmail.com"
               w="100%"
               color={Colors.main}
+              autoFocus
+              type="email"
               fontSize="15px"
               pl="2"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
             />
           </Box>
 
@@ -61,6 +84,9 @@ function LoginVIew() {
               color={Colors.main}
               pl="2"
               fontSize="15px"
+              value={password}
+              secureTextEntry
+              onChangeText={(text) => setPassword(text)}
             />
           </Box>
         </VStack>
@@ -78,9 +104,10 @@ function LoginVIew() {
             fontWeight: "bold",
             fontSize: "lg",
           }}
-          // onPress={{
-
-          // }}
+          onPress={() => {
+            _login;
+            navigation.navigate("Bottom");
+          }}
         >
           LOGIN
         </Button>
@@ -96,22 +123,25 @@ function LoginVIew() {
           </Text>
         </Pressable>
 
-        <Text>
-          Don't Have an Account?&nbsp;
+        <Pressable
+          onPress={() => navigation.navigate("Register")}
+          flexDirection="row"
+          alignItems="center"
+        >
+          <Text>Don't Have an Account?&nbsp;</Text>
           <Text
             style={{
               fontWeight: "500",
-              color: "#0047EA",
+              color: Colors.submain,
               textDecorationLine: "underline",
             }}
-            onPress={() => {}}
           >
             Sign Up
           </Text>
-        </Text>
+        </Pressable>
       </Box>
-    </Box>
+    </KeyboardAvoidingView>
   );
 }
 
-export default LoginVIew;
+export default LoginView;

@@ -1,3 +1,5 @@
+import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 import {
   Box,
   Center,
@@ -8,7 +10,7 @@ import {
   View,
   VStack,
 } from "native-base";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import Colors from "../color";
 import CButton from "../Components/CButton";
 
@@ -32,19 +34,27 @@ const ShippingInputs = [
 ];
 
 function ShippingView() {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      headerTitle: "Delivery Address",
+      headerShadowVisible: true,
+      headerTitleStyle: { color: "black" },
+      headerStyle: { backgroundColor: "white" },
+      headerTitleAlign: "center", 
+      headerTintColor: "black",
+    });
+  }, [navigation]);
+
+  const navigation = useNavigation()
   return (
-    <Box flex={1} safeAreaTop bg={Colors.main} py={5}>
-      {/* Header */}
-      <Center pb={15}>
-        <Text color="white" fontSize={18} bold>
-          DELIVERY ADDRESS
-        </Text>
-      </Center>
+    <Box flex={1} safeAreaTop bgColor="gray.50">
+        <StatusBar style="dark" />
 
       {/* Inputs */}
-      <Box bg="white" h="full" px={5}>
+      <Box px={5}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <VStack space={6} mt={5}>
+          <VStack space={6}>
 
             {ShippingInputs.map((i,index) => (
               <FormControl key={index}>
@@ -70,7 +80,7 @@ function ShippingView() {
                 />
               </FormControl>
             ))}
-            <CButton bg={Colors.main} color="white" mt={5}>
+            <CButton bg={Colors.main} color="white" mt={5} onPress={() => navigation.navigate("Payment")}>
               CONTINUE
             </CButton>
           </VStack>

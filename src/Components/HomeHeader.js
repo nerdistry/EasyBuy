@@ -49,7 +49,7 @@ function HomeHeader() {
         </Pressable>
 
         <Pressable mt={3} paddingLeft={3}>
-          <AntDesign name="user" size={25} color="white" />
+          <AntDesign name="poweroff" size={20} color="white" />
         </Pressable>
       </Box>
 

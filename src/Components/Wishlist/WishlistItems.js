@@ -11,8 +11,8 @@ import {
   VStack,
 } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
-import Colors from "../color";
-import products from "../data/products";
+import Colors from "../../color";
+import products from "../../data/products";
 
 const Swiper = () => (
   <SwipeListView
@@ -20,7 +20,7 @@ const Swiper = () => (
     previewRowKey="0"
     previewOpenValue={-40}
     previewOpenDelay={3000}
-    data={products.slice(0, 4)}
+    data={products.slice(0, 2)}
     renderItem={renderitem}
     renderHiddenItem={hiddenItem}
     showsVerticalScrollIndicator={false}
@@ -34,7 +34,7 @@ const renderitem = (data) => (
       <HStack
         alignItems="center"
         bg="white"
-        shadow={1}
+        shadow={2}
         rounded={5}
         overflow="hidden"
       >
@@ -53,16 +53,6 @@ const renderitem = (data) => (
           </Text>
           <Text color="gray.400">${data.item.price}</Text>
         </VStack>
-
-        <Center>
-          <Button
-            bg={Colors.main}
-            _pressed={{ bg: Colors.main }}
-            _text={{ color: "white" }}
-          >
-            5
-          </Button>
-        </Center>
       </HStack>
     </Box>
   </Pressable>
@@ -86,7 +76,7 @@ const hiddenItem = () => (
   </Pressable>
 );
 
-const CartItems = () => {
+const WishlistItems = () => {
   return (
     <Box>
       <Swiper />
@@ -94,4 +84,4 @@ const CartItems = () => {
   );
 };
 
-export default CartItems;
+export default WishlistItems;

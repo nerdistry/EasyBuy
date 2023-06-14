@@ -6,12 +6,13 @@ import {
   HStack,
   Image,
   Modal,
+  Spacer,
   Text,
   VStack,
 } from "native-base";
 import React, { useState } from "react";
-import Colors from "../../color";
-import CButton from "../CButton";
+import Colors from "../color";
+import CButton from "./CButton";
 
 const TotalOrder = [
   {
@@ -31,7 +32,7 @@ const TotalOrder = [
   },
 ];
 
-const PlaceOrderModel = () => {
+const ViewOrderModel = () => {
   const [showModel, setShowModel] = useState(false);
   const navigation = useNavigation();
   return (
@@ -42,7 +43,7 @@ const PlaceOrderModel = () => {
         color="white"
         mt={5}
       >
-        SHOW TOTAL
+        CONFIRM DELIVERY
       </CButton>
 
       <Modal isOpen={showModel} onClose={() => setShowModel(false)} size="lg">
@@ -72,30 +73,41 @@ const PlaceOrderModel = () => {
             </VStack>
           </Modal.Body>
           <Modal.Footer>
-            <Box pl={2} mr={5}>
-              <Image
-                source={require("../../../assets/images/mpesa.png")}
-                alt="mpesa"
-                resizeMode="cover"
-                w={60}
-                h={50}
-              />
-            </Box>
+
+          {/* CONFIRM */}
             <Button
-              flex={1}
+             
               w="48%"
               bg={Colors.main}
               h={45}
               _text={{ color: "white", fontWeight: "bold" }}
               onPress={() => {
-                navigation.navigate("OrderDetails");
+                navigation.navigate("Home");
                 setShowModel(false);
               }}
               _pressed={{
                 bg: Colors.main,
               }}
             >
-              PLACE ORDER
+              CONFIRM
+            </Button>
+<Spacer />
+            {/* CANCEL */}
+            <Button
+              
+              w="48%"
+              bg="red.600"
+              h={45}
+              _text={{ color: "white", fontWeight: "bold" }}
+              onPress={() => {
+                navigation.navigate("Home");
+                setShowModel(false);
+              }}
+              _pressed={{
+                bg: Colors.main,
+              }}
+            >
+              CANCEL
             </Button>
           </Modal.Footer>
         </Modal.Content>
@@ -104,4 +116,4 @@ const PlaceOrderModel = () => {
   );
 };
 
-export default PlaceOrderModel;
+export default ViewOrderModel;

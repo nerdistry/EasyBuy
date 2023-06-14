@@ -11,10 +11,12 @@ import {
   View,
   VStack,
 } from "native-base";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import Colors from "../color";
 import CButton from "../Components/CButton";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 
 const PaymentInputs = [
   {
@@ -36,20 +38,27 @@ const PaymentInputs = [
 ];
 
 function PaymentView() {
+  const navigation = useNavigation();
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      headerShadowVisible: true,
+      headerTitle: "Payment Details",
+      headerTitleStyle: { color: "black" },
+      headerStyle: { backgroundColor: "white" },
+      headerTitleAlign: "center",
+      headerTintColor: "black",
+    });
+  }, [navigation]);
   return (
-    <Box flex={1} safeAreaTop bg={Colors.main} py={5}>
-      {/* Header */}
-      <Center pb={15}>
-        <Text color="white" fontSize={18} bold>
-          PAYMENT DETAILS
-        </Text>
-      </Center>
+    <Box flex={1} safeAreaTop bg="gray.50" >
+        <StatusBar style="dark" />
 
       {/* Inputs */}
-      <Box bg="white" h="full" px={5}>
+      <Box px={5}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <VStack space={6} mt={5}>
-            <HStack alignItems="center" bg="gray.50" px={3} py={1} rounded={10} justifyContent="space-between">
+          <VStack space={6}>
+            <HStack alignItems="center" bg="white" px={3} py={1} rounded={10} shadow={1} mx={1} justifyContent="space-between">
               <Box>
                 <Image
                   source={require("../../assets/images/mpesa.png")}
@@ -84,7 +93,7 @@ function PaymentView() {
                   placeholder="e.g. 0700xxxxxx"
                 />
               </FormControl>
-            <CButton bg={Colors.main} color="white" mt={5}>
+            <CButton bg={Colors.main} color="white" mt={5} onPress={() => navigation.navigate("Placeorder")}>
               CONTINUE
             </CButton>
             <Text italic textAlign="center">

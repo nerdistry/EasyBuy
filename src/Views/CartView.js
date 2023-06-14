@@ -1,19 +1,39 @@
-import React from "react";
-import { Box, Button, Center, HStack, ScrollView, Text } from "native-base";
+import React, { useLayoutEffect } from "react";
+import { Box, Button, Center, HStack, ScrollView, Text, ArrowBackIcon } from "native-base";
 import CartEmpty from "../Components/CartEmpty";
 import CartItems from "../Components/CartItems";
 import Colors from "../color";
 import CButton from "../Components/CButton";
+import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import MyBackButton from "../Components/MyBackButton";
 
 function CartView() {
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      headerShadowVisible: true,
+      headerTitleStyle: { color: "black" },
+      headerStyle: { backgroundColor: "white" },
+      headerTitleAlign: "center",
+      headerTintColor: "black",
+    });
+  }, [navigation]);
+
   return (
-    <Box flex={1} safeAreaTop bg="gray.50">
+    <Box flex={1} safeAreaTop bg="gray.50" position="relative">
+      <StatusBar style="dark" />
+
+      
       {/* Header */}
-      <Center w="full" py={5}>
+      {/* <Center w="full" py={5}>
         <Text color="black" fontSize={25} bold>
           Cart
         </Text>
-      </Center>
+      </Center> */}
 
       {/* If Cart is Empty */}
       {/* <CartEmpty /> */}
@@ -54,8 +74,13 @@ function CartView() {
         </Center>
 
         {/* Checkout */}
-        <Center px={5}>
-          <CButton bg={Colors.main} color="white" mt={10}>
+        <Center px={5} mb={5}>
+          <CButton
+            bg={Colors.main}
+            color="white"
+            mt={10}
+            onPress={() => navigation.navigate("Shipping")}
+          >
             CHECKOUT
           </CButton>
         </Center>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { View, Text } from "react-native";
 import {
   Box,
@@ -7,16 +7,36 @@ import {
   Icon,
   Image,
   Input,
+  KeyboardAvoidingView,
   Pressable,
   VStack,
 } from "native-base";
 import Colors from "../color";
 import { MaterialIcons, Ionicons, AntDesign } from "@expo/vector-icons";
+import { StatusBar } from "expo-status-bar";
 
-function RegisterView() {
+function RegisterView({ navigation }) {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      headerShadowVisible: false,
+      headerTitleStyle: { color: "white" },
+      headerStyle: { backgroundColor: "white"},
+      headerTitleAlign: "center",
+      headerTintColor: "black",
+    });
+  }, [navigation]);
+
+  const _register = () => {};
+
   return (
-    <Box flex={1} bg={Colors.white}>
-      <Box alignItems="center" width="full" marginTop="15%">
+    <KeyboardAvoidingView flex={1} bg="white" behavior="padding" >
+    <StatusBar style="dark" />
+      <Box alignItems="center" width="full">
         <Image
           // flex={1}
           source={require("../../assets/logo_bg.png")}
@@ -24,6 +44,7 @@ function RegisterView() {
           alt="Logo"
           size="100"
           resizeMode="center"
+          mt={-5}
         />
       </Box>
       <Box
@@ -43,12 +64,14 @@ function RegisterView() {
               type="text"
               padding={2}
               variant="outline"
-              placeholder="My Name"
+              placeholder="John Doe"
               w="100%"
               color={Colors.main}
               fontSize="15px"
               pl="2"
-              bg="white"            
+              bg="white"
+              value={username}
+              onChangeText={(text) => setUsername(text)}
             />
           </Box>
 
@@ -65,12 +88,14 @@ function RegisterView() {
               color={Colors.main}
               fontSize="15px"
               pl="2"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
             />
           </Box>
 
           {/* PASSWORD */}
           <Box w="100%">
-            <Text style={{ fontWeight: "bold" }}>Password</Text>
+            <Text style={{ fontWeight: "bold" }}>Create Password</Text>
             <Input
               padding={2}
               type="password"
@@ -80,6 +105,9 @@ function RegisterView() {
               color={Colors.main}
               pl="2"
               fontSize="15px"
+              secureTextEntry
+              value={password}
+              onChangeText={(text) => setPassword(text)}
             />
           </Box>
         </VStack>
@@ -96,20 +124,20 @@ function RegisterView() {
           bg={Colors.main}
           _text={{
             fontWeight: "bold",
-            fontSize: "lg"
+            fontSize: "lg",
           }}
-          // onPress={{
-
-          // }}
+          onPress={() => {
+            _register;
+            navigation.navigate("Bottom");
+          }}
         >
-          SIGN UP
+          CREATE ACCOUNT
         </Button>
 
         <Text style={{ width: "100%", textAlign: "center" }}>or</Text>
 
         <VStack space={3} paddingTop="2">
-
-        {/* GOOGLE */}
+          {/* GOOGLE */}
           <Button
             _pressed={{
               bg: "white",
@@ -122,13 +150,14 @@ function RegisterView() {
             borderWidth="1"
             alignItems="center"
             justifyContent="center"
-          >            
-            <Text style={{ color: "black"}}>
-            <AntDesign name="google" size={15} color="black" />&nbsp;
-            Sign up with Google</Text>
+          >
+            <Text style={{ color: "black" }}>
+              <AntDesign name="google" size={15} color="black" />
+              &nbsp; Sign up with Google
+            </Text>
           </Button>
 
-        {/* FACEBOOK */}
+          {/* FACEBOOK */}
           <Button
             _pressed={{
               bg: "white",
@@ -141,28 +170,54 @@ function RegisterView() {
             borderWidth="1"
             alignItems="center"
             justifyContent="center"
-          >            
-            <Text style={{ color: "black"}}>
-            <AntDesign name="facebook-square" size={15} color="black" />&nbsp;
-            Sign up with Facebook</Text>
+          >
+            <Text style={{ color: "black" }}>
+              <AntDesign name="facebook-square" size={15} color="black" />
+              &nbsp; Sign up with Facebook
+            </Text>
+          </Button>
+
+          {/* APPLE */}
+          <Button
+            _pressed={{
+              bg: "white",
+            }}
+            // w="70%"
+            rounded={5}
+            bg="white"
+            type="outline"
+            borderColor="gray.300"
+            borderWidth="1"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Text style={{ color: "black" }}>
+              <AntDesign name="facebook-square" size={15} color="black" />
+              &nbsp; Sign up with Apple
+            </Text>
           </Button>
         </VStack>
 
-        <Text style={{ marginTop: "10%" }}>
-          Already Have an Account?&nbsp;
+        <Pressable
+          style={{ marginTop: "10%" }}
+          onPress={() => navigation.navigate("Login")}
+          flexDirection="row"
+          alignItems="center"
+        >
+          <Text>Already Have an Account?&nbsp;</Text>
           <Text
             style={{
               fontWeight: "500",
-              color: "#0047EA",
+              color: Colors.submain,
               textDecorationLine: "underline",
             }}
-            onPress={() => {}}
           >
             Login
           </Text>
-        </Text>
+        </Pressable>
+        <Box h={100}></Box>
       </Box>
-    </Box>
+    </KeyboardAvoidingView>
   );
 }
 

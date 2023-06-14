@@ -28,9 +28,9 @@ const Inputs = [
 
 const Profile = () => {
   return (
-    <Box h="full" bg="white" px={10}>
+    <Box h="full" bg="white" px={5}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <VStack space={10} mt={5} pb={10}>
+        <VStack space={5} mt={5} pb={10}>
 
           {Inputs.map((i, index) => (
             <FormControl key={index}>

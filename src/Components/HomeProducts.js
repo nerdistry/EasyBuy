@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import {
   Box,
   Flex,
@@ -14,6 +15,7 @@ import Categories from "./Categories";
 import Rating from "./Rating";
 
 function HomeProducts() {
+  const navigation = useNavigation()
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <Categories />
@@ -31,6 +33,7 @@ function HomeProducts() {
       >
         {products.map((product) => (
           <Pressable
+            onPress={() => navigation.navigate("Product", product)}
             key={product._id}
             w="47%"
             bg="white"

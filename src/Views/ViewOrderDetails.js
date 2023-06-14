@@ -3,24 +3,25 @@ import React, { useLayoutEffect } from "react";
 import OrderInfo from "../Components/Orders/OrderInfo";
 import { FontAwesome,FontAwesome5,Ionicons } from "@expo/vector-icons";
 import OrderItems from "../Components/Orders/OrderItems";
-import PlaceOrderModel from "../Components/Orders/PlaceOrderModel";
+import ViewOrderModel from "../Components/ViewOrderModel";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
 
-function PlaceOrderView() {
-  const navigation = useNavigation();
+function ViewOrderDetails() {
+const navigation = useNavigation();
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
       headerShadowVisible: true,
-      headerTitle: "Place Order",
+      headerTitle: "My Order",
       headerTitleStyle: { color: "black" },
       headerStyle: { backgroundColor: "white" },
       headerTitleAlign: "center",
       headerTintColor: "black",
     });
   }, [navigation]);
+
   return (
     <Box bg="gray.100" flex={1} safeArea>
         <StatusBar style="dark" />
@@ -57,10 +58,10 @@ function PlaceOrderView() {
         <OrderItems />
 
         {/* Total */}
-        <PlaceOrderModel />
+        <ViewOrderModel />
       </Box>
     </Box>
   );
 }
 
-export default PlaceOrderView;
+export default ViewOrderDetails;
