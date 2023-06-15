@@ -1,5 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+// Import the functions you need from the SDKs you need
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -7,6 +9,7 @@ import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: "AIzaSyCFHvgLt_zSUkQQHesTS_gT6e3g_c--R20",
   authDomain: "easybuy-d639a.firebaseapp.com",
+  databaseURL: "https://easybuy-d639a-default-rtdb.firebaseio.com",
   projectId: "easybuy-d639a",
   storageBucket: "easybuy-d639a.appspot.com",
   messagingSenderId: "4234040569",
@@ -15,4 +18,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase Authentication and get a reference to the service
+export const auth = getAuth(app);
 

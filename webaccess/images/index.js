@@ -10,6 +10,13 @@ import creatorbackground8 from "./creatorbackground-8.jpg";
 import creatorbackground9 from "./creatorbackground-9.jpg";
 import creatorbackground10 from "./creatorbackground-10.jpg";
 import creatorbackground11 from "./creatorbackground-11.jpg";
+import easy_buy_white_logo from "./easy_buy_white_logo.png";
+
+/* */
+
+import easy_buy_transparent_logo from "./easy_buy_transparent_logo.png";
+import google from "./google.png";
+
 import user1 from "./user-1.png";
 import user2 from "./user-2.png";
 import user3 from "./user-3.png";
@@ -87,6 +94,13 @@ export default {
   creatorbackground9,
   creatorbackground10,
   creatorbackground11,
+
+
+  easy_buy_transparent_logo,
+
+  easy_buy_white_logo,
+  google,
+  
   user1,
   user2,
   user3,

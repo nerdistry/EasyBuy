@@ -1,14 +1,14 @@
 import React from "react";
 
 //INTERNAL IMPORT
-import Style from "./Button.module.css";
+import Style from "./button.module.css";
 
-const button = ({ btnName, handleClick, icon, classStyle }) => {
+const Button = ({ btnName, handleClick, icon, classStyle }) => {
   return (
     <div className={Style.box}>
       <button
         className={`${Style.button} ${classStyle}`}
-        onClick={() => handleClick()}
+        onClick={() => {handleClick}}
       >
         {icon} {btnName}
       </button>
@@ -16,4 +16,4 @@ const button = ({ btnName, handleClick, icon, classStyle }) => {
   );
 };
 
-export default button;
+export default Button;
