@@ -10,12 +10,12 @@ import {
 } from "@expo/vector-icons";
 import { Center, Pressable } from "native-base";
 import Colors from "../color";
-import ProfileView from "../Views/ProfileView";
-import CartView from "../Views/CartView";
+import ProfileView from "../Screens/ProfileView";
+import CartView from "../Screens/CartView";
 import StackNav from "./StackNav";
-import WishlistView from "../Views/WishlistView";
+import WishlistView from "../Screens/WishlistView";
 import { StatusBar } from "expo-status-bar";
-import CategoryView from "../Views/CategoryView";
+import CategoryView from "../Screens/CategoryView";
 
 const Tab = createBottomTabNavigator();
 const CustomTab = ({ children, onPress }) => (

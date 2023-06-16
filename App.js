@@ -4,20 +4,20 @@ import React from "react";
 import { NativeBaseProvider } from "native-base";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import LoginView from "./src/Views/LoginView";
-import RegisterView from "./src/Views/RegisterView";
+import LoginView from "./src/Screens/LoginView";
+import RegisterView from "./src/Screens/RegisterView";
 import BottomNav from "./src/Navigation/BottomNav";
-import NotLoggedInView from "./src/Views/NotLoggedInView";
-import VerifyEmail from "./src/Views/VerifyEmail";
+import NotLoggedInView from "./src/Screens/NotLoggedInView";
+import VerifyEmail from "./src/Screens/VerifyEmail";
 
 import Colors from "./src/color";
-import Homepage from "./src/Views/Homepage";
-import CategoryView from "./src/Views/CategoryView";
-import ViewProduct from "./src/Views/ViewProduct";
-import ShippingView from "./src/Views/ShippingView";
-import PaymentView from "./src/Views/PaymentView";
-import ViewOrderDetails from "./src/Views/ViewOrderDetails";
-import PlaceOrderView from "./src/Views/PlaceOrderView";
+import Homepage from "./src/Screens/Homepage";
+import CategoryView from "./src/Screens/CategoryView";
+import ViewProduct from "./src/Screens/ViewProduct";
+import ShippingView from "./src/Screens/ShippingView";
+import PaymentView from "./src/Screens/PaymentView";
+import ViewOrderDetails from "./src/Screens/ViewOrderDetails";
+import PlaceOrderView from "./src/Screens/PlaceOrderView";
 
 const Stack = createNativeStackNavigator();
 

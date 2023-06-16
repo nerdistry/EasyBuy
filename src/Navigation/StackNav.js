@@ -1,15 +1,15 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react'
-import CartView from '../Views/CartView';
-import CategoryView from '../Views/CategoryView';
-import Homepage from "../Views/Homepage";
-import PaymentView from '../Views/PaymentView';
-import PlaceOrderView from '../Views/PlaceOrderView';
-import ProfileView from '../Views/ProfileView';
-import ShippingView from '../Views/ShippingView';
-import ViewOrderDetails from '../Views/ViewOrderDetails';
-import ViewProduct from '../Views/ViewProduct';
-import WishlistView from '../Views/WishlistView';
+import CartView from '../Screens/CartView';
+import CategoryView from '../Screens/CategoryView';
+import Homepage from "../Screens/Homepage";
+import PaymentView from '../Screens/PaymentView';
+import PlaceOrderView from '../Screens/PlaceOrderView';
+import ProfileView from '../Screens/ProfileView';
+import ShippingView from '../Screens/ShippingView';
+import ViewOrderDetails from '../Screens/ViewOrderDetails';
+import ViewProduct from '../Screens/ViewProduct';
+import WishlistView from '../Screens/WishlistView';
 
 
 const Stack = createNativeStackNavigator();
