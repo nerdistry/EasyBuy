@@ -7,21 +7,18 @@ import Style from "./loginAndSignUp.module.css";
 import images from "../../images";
 import Button from "../button/button";
 
-const loginAndSignUp = () => {
+const LoginAndSignUp = () => {
+  const {googleSignIn} = userAuth();
 
-
- const googleSignIn = async () => {
-  const provider = new GoogleAuthProvider();
-  try {
-    const result = await signInWithPopup(auth, provider);
-    // You can access the signed in user with result.user
-    console.log(result.user);
-  } catch (error) {
-    // Handle Errors here.
-    console.error(error);
-  }
-};
-
+  const handlegoogleSignIn = async () => {
+    // const provider = new GoogleAuthProvider();
+    try {
+      await googleSignIn();
+    } catch (error) {
+      // Handle Errors here.
+      console.log(error);
+    }
+  };
 
   const [activeBtn, setActiveBtn] = useState(1);
 
@@ -29,7 +26,7 @@ const loginAndSignUp = () => {
     {
       social: images.google,
       name: "Continue with Google",
-      handler: googleSignIn, // handleGoogleSignIn function will be called on click
+      onClick: handlegoogleSignIn, // handleGoogleSignIn function will be called on click
     },
     {
       social: images.facebook,
@@ -42,34 +39,7 @@ const loginAndSignUp = () => {
       // Assuming you have a function for Twitter sign-in
     },
   ];
-  
-  // ...
-  
-  {socialImage.map((el, i) => (
-    <div
-      key={i + 1}
-      onClick={() => {
-        setActiveBtn(i + 1);
-        el.handler && el.handler();  // Call the handler if it's defined
-      }}
-      className={`${Style.user_box_social_item} ${
-        activeBtn == i + 1 ? Style.active : ""
-      }`}
-    >
-      <Image
-        src={el.social}
-        alt={el.name}
-        width={30}
-        height={30}
-        className={Style.user_box_social_item_img}
-      />
-      <p>
-        <span>{el.name}</span>
-      </p>
-    </div>
-  ))}
-  
-  
+
   return (
     <div className={Style.user}>
       <div className={Style.user_box}>
@@ -97,7 +67,10 @@ const loginAndSignUp = () => {
           {socialImage.map((el, i) => (
             <div
               key={i + 1}
-              onClick={() => setActiveBtn(i + 1)}
+              onClick={() => {
+                setActiveBtn(i + 1);
+                el.onClick && el.onClick(); // Call the function here
+              }}
               className={`${Style.user_box_social_item} ${
                 activeBtn == i + 1 ? Style.active : ""
               }`}
@@ -120,4 +93,4 @@ const loginAndSignUp = () => {
   );
 };
 
-export default loginAndSignUp;
+export default LoginAndSignUp;

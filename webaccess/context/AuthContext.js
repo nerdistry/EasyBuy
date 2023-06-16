@@ -7,7 +7,7 @@ import {
     onAuthStateChanged} from "firebase/auth";
 import {auth} from "../pages/firebase";
 
-const AuthContext = createContext();
+const AuthContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
 
